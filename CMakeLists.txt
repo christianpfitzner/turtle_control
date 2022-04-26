@@ -7,6 +7,8 @@ project(turtle_control)
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
+  turtlebot3_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -127,16 +129,34 @@ include_directories(
 # add_dependencies(turtle_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(turtle_control_node src/turtle_control_node.cpp)
+add_executable(turtle_control_node  src/turtle_control_node.cpp)
+add_executable(turtle_obstacle_stop src/turtle_obstacle_stop.cpp)
+add_executable(turtle_obstacle_beep src/turtle_obstacle_beep.cpp)
+add_executable(turtle_tilt_beep     src/turtle_tilt_beep.cpp)
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(turtle_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(turtle_control_node
-   ${catkin_LIBRARIES}
- )
+target_link_libraries(turtle_control_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(turtle_obstacle_stop
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(turtle_obstacle_beep
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(turtle_tilt_beep
+  ${catkin_LIBRARIES}
+)
+
+
 
 #############
 ## Install ##
