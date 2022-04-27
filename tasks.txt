@@ -1,0 +1,17 @@
+1. Task: 
+Have a look at the src/turtle_obstacle_stop.cpp node and its subtasks. 
+
+2. Task: 
+Have a look at the src/turtle_obstacle_beep.cpp node and its subtasks. 
+
+3. Task: 
+Have a look at the src/turtle_tilt_beep.cpp node and its subtasks. 
+
+4. Task: 
+Write a launch file for all the above three nodes.
+
+5. Task: 
+Create a new node from scratch which makes the robot move in a certain pattern (Square, Circle).
+
+6. Task: 
+Write a node which drives the robot to a given relative point based on inverse kinematics. 

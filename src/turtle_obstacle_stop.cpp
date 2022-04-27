@@ -38,20 +38,22 @@ void lidarCallback(const sensor_msgs::LaserScan msg)
     }
 
 
-    // drive the robot with 0.3 m/s forward
-    geometry_msgs::Twist vel; 
-    vel.linear.x  = 1.0; 
-    vel.angular.z = 0.0; 
+    // 1. Task: 
+    // Let the robot drive forward until an obstacle is closer than 0.5 meters to the robot.
+    // Modify the cmd_vel message depending on the distance. 
+    // An if else statement might be a hint. 
 
-    // if the closest point is less than 0.5 meters away, stop the robot
-    if (min_dist < 0.5)
-    {
-        vel.linear.x = 0.0;
-        vel.angular.z = 0.0;
-    }
 
-    // publish the velocity command
-    vel_pub.publish(vel);
+    // 2. Task:
+    // Make the robot go slower, if it close to an obstacle -- e.g. closer than 1 meter. 
+    // Make it stop if the obstacle is closer than 0.5 meters. 
+    
+
+    // 3 Task:
+    // Publish the distance to the closest obstacle in a float message on the topic /distance.
+    // You will need to include a new header for this message (std_msgs/Float32.h). 
+    // Add all necessary configuration for the publisher and check the result via rostopic commands. 
+
 }
 
 
@@ -61,10 +63,8 @@ void lidarCallback(const sensor_msgs::LaserScan msg)
     ros::init(argc, argv, "turtle_obstacle_stop");
     ros::NodeHandle nh;
 
-
-    vel_pub    = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-
-    lidar_sub  = nh.subscribe("scan", 1, lidarCallback);
+    vel_pub    = nh.advertise<geometry_msgs::Twist>("insert-topic-to-move-robot", 1);
+    lidar_sub  = nh.subscribe("insert-topic-for-lidar", 1, lidarCallback);
 
 
     // this comand replaces the while(ros::ok())-loop and the sleep command

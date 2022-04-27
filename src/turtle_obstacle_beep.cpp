@@ -22,9 +22,6 @@
 ros::Publisher sound_pub;
 
 
-
-
-
 void lidarCallback(const sensor_msgs::LaserScan msg)
 {
     // calculate the closest point to the robot
@@ -39,15 +36,13 @@ void lidarCallback(const sensor_msgs::LaserScan msg)
         }
     }
 
+    // 1. Task: 
+    // Insert the publisher of a beep noise in case an obstacle is closer than 0.5 meters to the robot. 
 
-    ROS_ERROR("Lidar: %f", min_dist);
 
-    if(min_dist < 0.5)
-    {
-        turtlebot3_msgs::Sound sound;
-        sound.value = 3;
-        sound_pub.publish(sound);
-    }
+
+
+
 }
 
 
@@ -59,8 +54,8 @@ int main(int argc, char* argv[])
     ros::NodeHandle nh;
 
 
-    sound_pub                = nh.advertise<turtlebot3_msgs::Sound>("sound", 1);
-    ros::Subscriber lidar_sub = nh.subscribe("scan", 1, lidarCallback);
+    sound_pub                = nh.advertise<turtlebot3_msgs::Sound>("insert-sound-topic", 1);
+    ros::Subscriber lidar_sub = nh.subscribe("insert-scan-topic", 1, lidarCallback);
     
     
 
