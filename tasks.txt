@@ -14,4 +14,7 @@ Write a launch file for all the above three nodes.
 Create a new node from scratch which makes the robot move in a certain pattern (Square, Circle).
 
 6. Task: 
+Create a battery percentage value in a newly generated node. 
+
+7. Task: 
 Write a node which drives the robot to a given relative point based on inverse kinematics. 
